@@ -1,0 +1,53 @@
+<div class="main" >
+ 
+<span class="title">Bienvenue {{currentUser.firstName}} {{currentUser.lastName}}</span>
+
+
+<div class="leave" >
+    <div class="card card-stats" style=" background-color: rgba(255, 255, 255, 0.5); margin: 4%;">
+        <div class="card-header card-header-warning card-header-icon">
+            <button mat-button>
+                <i  style="position: absolute; left:0% ;color: rgb(126, 126, 126); font-size: 48px;" 
+                class="material-icons">wb_sunny</i>
+            </button>
+            <p class="card-category" style="margin-top: 5px; margin-left: 120px !important;">Mon solde de congés</p>
+            <h4 class="card-title" *ngIf="currentUser.leavesBalance!== undefined">{{currentUser.leavesBalance || 0}}
+            </h4>
+            <hr style="width:80%; margin-left:30px">
+            <i class="fa-solid fa-calendar-days" style="color: rgb(126, 126, 126); font-size: 18px;"></i> 
+            <span class="date" style="margin-left: 10px !important;">{{currentUser.leavesBalanceDate | date }}</span>
+        </div>
+        </div>
+        </div>
+
+
+</div>
+<div class="main-box">
+
+    <div class="icon-box" style="left: 11%; bottom: 40%; " [routerLink]="['/dashboard/compte']">
+
+        <i class="fa-solid fa-user i"></i>
+       </div>
+
+    <div class="mini-box mat-elevation-z8" style="width: 500px !important; margin-left: 5%; margin-right: 4%;">
+  
+      <h3 style="color:rgb(86, 86, 86); font-size:18px; position:relative; left:350px; top:10px">Mon profil</h3>
+      <hr style="width:25%; margin-left:320px; border: 1px dashed rgb(0, 0, 0);">
+      <p>Matricule : {{currentUser.registrationNumber}}</p><br>
+      <p>Qualification : {{qualification.name}} </p> <br>
+      <p>Cnss :  {{currentUser.cnss}}</p>
+    </div>
+
+
+    <div class="icon-box" style="left: 6%; bottom: 30%; " [routerLink]="['/dashboard/entreprise']">
+        <i class="fa-solid fa-house i"></i>
+       </div>
+
+    <div class="mini-box  mat-elevation-z8" style="width: 500px !important;">
+        <h3 style="color:rgb(86, 86, 86); font-size:18px; position:relative; left:350px; top:10px">Mon entreprise</h3>
+        <hr style="width:25%; margin-left:320px; border: 1px dashed rgb(0, 0, 0);">
+        <p><i class="fa-solid fa-envelope"></i> {{entite.email}}</p><br>
+        <p><i class="fa-solid fa-phone"></i> {{entite.telephone}} </p> <br>
+        <p><i class="fa-solid fa-location-dot"></i> {{entite.address}}</p>
+    </div>
+</div>

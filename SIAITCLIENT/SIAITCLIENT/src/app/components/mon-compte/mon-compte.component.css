@@ -1,0 +1,36 @@
+.main-content {
+    margin-top: 100px;
+    width: 80%;
+    margin-left: 150px;
+
+}
+
+
+.card-header {
+    width: 95%;
+    position: relative;
+    bottom: 30px;
+    left: 30px;
+    border-bottom: none;
+    background: linear-gradient(45deg,rgba(71, 74, 74, 0.7), rgb(3, 58, 58,0.7));
+    border-radius: 5px;
+    height: 60px;
+    padding: 10px;
+}
+
+.card-title {
+    font-size: 24px;
+    color: rgba(73, 104, 205, 0.721);
+    color: white;
+    letter-spacing: 1px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, monospace;
+}
+
+.input{
+    width: 300px !important;
+}
+
+.retour{
+   margin-right: 5px !important;
+}
+

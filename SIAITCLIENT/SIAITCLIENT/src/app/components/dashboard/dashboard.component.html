@@ -1,0 +1,81 @@
+<!-- <router-outlet></router-outlet>
+<mat-toolbar color="warn" >
+    <mat-toolbar-row>
+        <button (click)="sidenav.toggle();" mat-icon-button>
+            <mat-icon >menu</mat-icon>
+        </button>
+        <h1>Dashboard</h1>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container >
+    <mat-sidenav #sidenav opened="false" mode="side" style="width: 200px;">
+        <mat-nav-list>
+            <div *ngFor="let module of Modules">
+            <a mat-list-item  (click)="showFiller = !showFiller" >{{module?.title}}
+                <mat-nav-list *ngIf="showFiller"  >
+                    <a mat-list-item  *ngFor="let menu of Menus">{{menu?.title}}</a>
+                </mat-nav-list> 
+            </a>
+            
+        </div>
+           
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div style="height: 850px;margin-top: 20px;margin-left: 25px;" >
+           
+        <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container> -->
+
+
+<mat-toolbar style="background-color: rgb(2, 42, 42);">
+    <mat-toolbar-row>
+        <button mat-icon-button (click)="sidenav.toggle();" >
+            <mat-icon style="color: aliceblue;">menu</mat-icon>
+        </button>
+        <h1 style="color: aliceblue;" routerLink="presentation">Dashboard</h1>
+        <button mat-button [matMenuTriggerFor]="menu" style="position: absolute; left:95%"> <i class="material-icons" style="color: aliceblue;">person</i></button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="compte"><span class="material-symbols-outlined" style="position:absolute; top: 11px !important; left:1px">
+    account_box
+    </span><span style="margin-left: 10px;">Mon compte</span> </button>
+  <button mat-menu-item (click)="disconnect()"><span style="position:absolute; top: 14px !important; left:1px"
+     class="material-symbols-outlined">
+    logout
+    </span><span style="margin-left: 10px;">Déconnexion</span> </button>
+</mat-menu>
+
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container >
+    <mat-sidenav #sidenav mode="side" >
+        <mat-nav-list style="width: 220px;">
+            <ul>
+                <li *ngFor="let module of Modules">
+                    <a (click)="toggleMenu(module)">
+                        <i class="material-icons">{{module.icon}}</i>
+                        <p class="menu-title">{{module.title}}</p>
+                    </a>
+
+                    <ul *ngIf="showMenus(module.id!)">
+                        <li *ngFor="let menu of getMenusByModule(module)" style="list-style-type: none;">
+                            <a class="nav-link" routerLink={{menu.path}} routerLinkActive="link">
+                                <i class="material-icons menu-icon">{{menu.icon}}</i>
+                                <p class="menu-title">{{menu.title}}</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+            </ul>
+
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content  >
+        <div style="min-height: 700px !important;">
+            <router-outlet ></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

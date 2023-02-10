@@ -1,0 +1,129 @@
+<div>
+    <div mat-dialog-title>
+      {{title}}
+    </div>
+    <mat-divider></mat-divider>
+  
+    <div mat-dialog-content>
+      <mat-card>
+        <mat-card-content class="card-content">
+          <form name="form" #f="ngForm">
+
+            <div class="input-container">
+              <mat-form-field style="margin-right:60px">
+                <mat-label>From</mat-label>
+                <input matInput [matDatepicker]="picker7" name="From" #from="ngModel"
+                  [(ngModel)]="career.from">
+                <mat-datepicker-toggle matSuffix [for]="picker7"></mat-datepicker-toggle>
+                <mat-datepicker #picker7></mat-datepicker>
+              </mat-form-field>
+  
+  
+  
+              <mat-form-field>
+                <mat-label>To</mat-label>
+                <input matInput [matDatepicker]="picker8" name="To" #to="ngModel"
+                  [(ngModel)]="career.to">
+                <mat-datepicker-toggle matSuffix [for]="picker8"></mat-datepicker-toggle>
+                <mat-datepicker #picker8></mat-datepicker>
+              </mat-form-field>
+
+
+            </div>
+
+
+            <br>
+        
+            <div class="input-container">
+              <mat-form-field  style="margin-right:60px; width: 200px;">
+                <mat-label>Bban</mat-label>
+                <input matInput name="bban" type="text" placeholder="3545..." #bban="ngModel"
+                  [(ngModel)]="career.bban" required>
+  
+              </mat-form-field>
+
+              <mat-form-field style="width: 200px;">
+                <mat-label>Salaire</mat-label>
+                <input matInput name="salary" placeholder="ex : 200DT" type="number" #salary="ngModel"
+                  [(ngModel)]="career.salary" required>
+  
+              </mat-form-field>
+  
+            </div>
+            
+            <br>
+  
+            
+  
+  
+           
+            <div class="input-container" >
+
+              <mat-form-field  style="margin-right:60px; width: 200px;">
+                <mat-select matInput [(ngModel)]="career.categoryId" name="Categorie" placeholder="Catégorie"
+                  required>
+                  <mat-option *ngFor="let category of categories" [value]="category.id">
+                    {{ category.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+  
+              <mat-form-field style="width: 200px;">
+                <mat-select matInput [(ngModel)]="career.gradeId" name="Grade" placeholder="Grade" required>
+                  <mat-option *ngFor="let garde of grades" [value]="garde.id">
+                    {{ garde.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+  
+            </div><br>
+  
+            <div class="input-container">
+              <mat-form-field style="margin-right:60px; width: 200px;">
+                <mat-select matInput [(ngModel)]="career.qualificationId" name="qualification"
+                  placeholder="Qualification" required>
+                  <mat-option *ngFor="let qualification of qualifications" [value]="qualification.id">
+                    {{ qualification.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field style="width: 200px;">
+                <mat-select matInput [(ngModel)]="career.civilStatusId" name="civilStatus"
+                  placeholder="CivilStatus" required>
+                  <mat-option *ngFor="let civilStatus of civilStatuses" [value]="civilStatus.id">
+                    {{ civilStatus.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+  
+            </div><br>
+  
+  
+            <div class="input-container">
+            
+              <mat-form-field style="width: 200px; margin-right: 60px;">
+                <mat-label>Nombre d'enfants</mat-label>
+                <input matInput name="numberOfChildlren" placeholder="2." type="number" #numberOfChildren="ngModel"
+                  [(ngModel)]="career.numberOfChildren" required>
+  
+              </mat-form-field>
+  
+              <mat-checkbox matInput name="houseHolder" #houseHolder="ngModel" [(ngModel)]="career.houseHolder"
+                required>Chef de famille</mat-checkbox>
+
+            </div><br>
+           
+  
+           
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <mat-divider></mat-divider>
+    <div mat-dialog-actions fxLayout="row" fxLayoutAlign="end">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!f.form.valid"
+        (click)="saveEmploy()">{{buttonName}}</button>
+      <button mat-raised-button (click)=close()>Annuler</button>
+    </div>
+  </div>

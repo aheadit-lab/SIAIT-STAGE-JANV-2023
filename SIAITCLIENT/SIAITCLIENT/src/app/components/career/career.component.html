@@ -1,0 +1,57 @@
+<button *ngIf="testUser()" mat-raised-button class="btn btn-success pull-right" (click)="addCareer()" ><i class="material-icons">add_circle_outline</i> Ajouter</button>
+<br>
+<table >
+      
+    <th class="th">
+        Du
+</th>
+    <th  class="th">
+        Au
+    </th>
+    <th  class="th">
+        Salaire
+    </th>
+    <th class="th">
+        Catégorie
+    </th>
+    <th  class="th">
+        Ech.
+    </th>
+   
+    <th class="th" >
+        Nombre d'enfants
+    </th>
+
+    <th class="th">
+        RIB
+    </th>
+    <th  class="th">
+        Etat civil
+    </th>
+   
+    <th class="th">
+        Qualification
+    </th>
+    <th >
+    </th>
+    <th ></th>
+
+
+    <tr  *ngFor="let career of careers"  >
+        <td>{{career.from | date : 'dd-MM-yyyy'}}</td>
+        <td>{{career.to ? (career.to | date : 'dd-MM-yyyy') : 'Actif'}}</td>
+        <td>{{career.salary}}</td>
+        <td>{{career.category ? career.category.name : ''}}</td>
+        <td>{{career.grade ? career.grade.name : ''}}</td>
+        <td>{{career.numberOfChildren}}</td>
+        <td>{{career.bban}}</td>
+        <td>{{career.civilStatus ? career.civilStatus.name : ''}}</td>
+        <td class="name">{{career.qualification ? career.qualification.name : ''}}</td>
+       <div *ngIf="testUser()">
+        <td  matTooltip="Editer" ><i class="material-icons" (click)="modifyCareer(career!)">edit</i></td>
+        <td matTooltip="Supprimer"><i class="material-icons" (click)="deleteCareer(career.id!)">delete</i></td>
+    </div>
+    </tr>
+
+</table>
+<mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons  ></mat-paginator> 

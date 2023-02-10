@@ -1,0 +1,227 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mat-elevation-z8 ">
+                    <div class="card-header">
+                        <h4 class="card-title">Fiche collaborateur</h4>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="collaboratorForm">
+                            <button mat-raised-button class="btn btn-default pull-right" title="Recharger"
+                                (click)="ngOnInit()"><i class="material-icons">refresh</i></button><br />
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="input">
+                                        <input matInput placeholder="Nom" type="text" name="lastName" required
+                                            formControlName="lastNameControl" [(ngModel)]="collaborateur.lastName"
+                                            pattern="([a-zA-Z]|\s)+">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="input">
+                                        <input matInput placeholder="Prénom" type="text"
+                                            [(ngModel)]="collaborateur.firstName" name="firstName" required
+                                            formControlName="firstNameControl" pattern="([a-zA-Z]|\s)+">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="input">
+                                        <input matInput readonly [matDatepicker]="birthDatePicker"
+                                            placeholder="Date de naissance" [(ngModel)]="collaborateur.birthDate"
+                                            formControlName="birthDateControl">
+                                        <mat-datepicker-toggle matSuffix
+                                            [for]="birthDatePicker"></mat-datepicker-toggle>
+                                        <mat-datepicker #birthDatePicker></mat-datepicker>
+                                    </mat-form-field>
+                                    <mat-error
+                                        *ngIf="collaboratorForm.controls['birthDateControl'].invalid && (collaboratorForm.controls['birthDateControl'].dirty || collaboratorForm.controls['birthDateControl'].touched)">
+                                        Format de date attendu : jj/mm/yyyy
+                                    </mat-error>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="input">
+                                        <input matInput placeholder="Email" type="email"
+                                            [(ngModel)]="collaborateur.email" name="email" required
+                                            formControlName="emailControl">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="input">
+                                        <input matInput placeholder="Tel." type="text"
+                                            [(ngModel)]="collaborateur.phoneNumber" name="phoneNumber"
+                                            formControlName="telControl">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="input" name="sex">
+                                        <mat-select [(ngModel)]="collaborateur.sex" placeholder="Sexe" required
+                                            formControlName="sexControl">
+                                            <mat-option [value]="'MAN'">
+                                                Homme
+                                            </mat-option>
+                                            <mat-option [value]="'WOMAN'">
+                                                Femme
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <mat-form-field class="input">
+                                        <input matInput placeholder="CNSS" [(ngModel)]="collaborateur.cnss" type="text"
+                                            name="cnss" required formControlName="cnssControl"
+                                            pattern="[0-9]{8}\-[0-9]{2}">
+                                    </mat-form-field>
+                                    <mat-error
+                                        *ngIf="collaboratorForm.controls['cnssControl'].invalid && (collaboratorForm.controls['cnssControl'].dirty || collaboratorForm.controls['cnssControl'].touched)">
+                                        Format CNSS attendu : 8 chiffres - 2 chiffres
+                                    </mat-error>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="input">
+                                        <input matInput placeholder="CIN" [(ngModel)]="collaborateur.cin" type="text"
+                                            name="cin" required formControlName="cinControl" pattern="[0-9]{8}">
+                                    </mat-form-field>
+                                    <mat-error
+                                        *ngIf="collaboratorForm.controls['cinControl'].invalid && (collaboratorForm.controls['cinControl'].dirty || collaboratorForm.controls['cinControl'].touched)">
+                                        Format CIN attendu : 8 chiffres
+                                    </mat-error>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="input">
+                                        <input matInput placeholder="Matricule"
+                                            [(ngModel)]="collaborateur.registrationNumber" type="text"
+                                            name="registrationNumber" required
+                                            formControlName="registrationNumberControl" pattern="[0-9]+">
+                                    </mat-form-field>
+                                    <mat-error
+                                        *ngIf="collaboratorForm.controls['registrationNumberControl'].invalid && (collaboratorForm.controls['registrationNumberControl'].dirty || collaboratorForm.controls['registrationNumberControl'].touched)">
+                                        Format matricule attendu : Que des chiffres
+                                    </mat-error>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="input">
+                                        <input matInput readonly [matDatepicker]="hiringDatePicker"
+                                            placeholder="Date d'embauche" [(ngModel)]="collaborateur.hiringDate"
+                                            formControlName="hiringDateControl">
+                                        <mat-datepicker-toggle matSuffix
+                                            [for]="hiringDatePicker"></mat-datepicker-toggle>
+                                        <mat-datepicker #hiringDatePicker></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <mat-form-field class="input" name="civilStatus">
+                                        <mat-select [(ngModel)]="collaborateur.civilStatusId" placeholder="Etat civil"
+                                            [required]="!disableCareerFields" formControlName="civilStatusControl">
+                                            <mat-option *ngFor="let status of civilStatuses" [value]="status.id">
+                                                {{ status.name}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-2">
+                                    <mat-checkbox (click)="toggleHouseHolder()" [(ngModel)]="collaborateur.houseHolder"
+                                        formControlName="houseHolderControl" [disabled]="true">Chef de
+                                        famille</mat-checkbox>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="input" name="qualification">
+                                        <mat-select [(ngModel)]="collaborateur.qualificationId"
+                                            placeholder="Qualification" [required]="!disableCareerFields"
+                                            formControlName="qualificationControl">
+                                            <mat-option *ngFor="let qualification of qualifications"
+                                                [value]="qualification.id">
+                                                {{ qualification.name }}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-2">
+                                    <mat-form-field class="input">
+                                        <input matInput placeholder="Nombre d'enfants" type="number"
+                                            [(ngModel)]="collaborateur.numberOfChildren" name="numberOfChildlren"
+                                            [required]="!disableCareerFields" formControlName="numberOfChildlrenControl"
+                                            pattern="\d+(\.\d+)?">
+                                    </mat-form-field>
+                                    <mat-error
+                                        *ngIf="collaboratorForm.controls['numberOfChildlrenControl'].invalid && (collaboratorForm.controls['numberOfChildlrenControl'].dirty || collaboratorForm.controls['numberOfChildlrenControl'].touched)">
+                                        Le nombre d'enfants doit etre positif
+                                    </mat-error>
+                                </div>
+                                <div class="col-md-2">
+                                    <mat-form-field class="input" name="grade"
+                                        style="width: 100px !important; margin-left:60px !important; ">
+                                        <mat-select [(ngModel)]="collaborateur.gradeId" placeholder="Ech."
+                                            [required]="!disableCareerFields" formControlName="gradeControl">
+                                            <mat-option *ngFor="let grade of grades" [value]="grade.id">
+                                                {{ grade.name }}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <mat-form-field class="input">
+                                        <input matInput placeholder="RIB" [(ngModel)]="collaborateur.bban" type="text"
+                                            name="bban" [required]="!disableCareerFields" formControlName="bbanControl"
+                                            pattern="[0-9]{20}">
+                                    </mat-form-field>
+                                    <mat-error
+                                        *ngIf="collaboratorForm.controls['bbanControl'].invalid && (collaboratorForm.controls['bbanControl'].dirty || collaboratorForm.controls['bbanControl'].touched)">
+                                        Format RIB attendu : 20 chiffres
+                                    </mat-error>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="input" name="category">
+                                        <mat-select [(ngModel)]="collaborateur.categoryId" placeholder="Catégorie"
+                                            [required]="!disableCareerFields" formControlName="categoryControl">
+                                            <mat-option *ngFor="let category of categories" [value]="category.id">
+                                                {{ category.name }}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="input">
+                                        <input matInput placeholder="Salaire" [(ngModel)]="collaborateur.salary"
+                                            type="number" name="salary" formControlName="salaryControl">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="input">
+                                        <input matInput placeholder="Solde de congés"
+                                            [(ngModel)]="collaborateur.leavesBalance" type="number" name="leaveBalance"
+                                            required formControlName="leaveBalanceControl">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <button [disabled]="!collaboratorForm.valid" mat-raised-button type="submit"
+                                class="btn btn-success pull-right" (click)="save()">Sauvegarder</button>
+                            <button mat-raised-button class="btn  btn-success pull-right retour"
+                                (click)="goBack()">Retour</button>
+                            <mat-error class="pull-right" *ngIf="" style="margin-right: 2%">
+
+                            </mat-error>
+                            <div class="clearfix"></div>
+                        </form>
+                        <div>
+                  
+                            <mat-tab-group>
+                                <mat-tab label="Carriére">
+                                    <app-career [collaboratorId]="id"></app-career>
+                                </mat-tab>
+                            </mat-tab-group>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

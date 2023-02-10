@@ -1,0 +1,95 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mat-elevation-z8 ">
+                    <div class="card-header">
+                        <h4 class="card-title">Mon profil</h4>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="compteForm">
+                            <button mat-raised-button class="btn btn-default pull-right" title="Recharger"
+                                (click)="ngOnInit()"><i class="material-icons">refresh</i></button><br />
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="input">
+                                        <input matInput placeholder="Nom" type="text" name="lastName" required
+                                            formControlName="lastNameControl" [(ngModel)]="currentUser.lastName">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="input">
+                                        <input matInput placeholder="Prénom" type="text"
+                                            [(ngModel)]="currentUser.firstName" name="firstName" required
+                                            formControlName="firstNameControl" >
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="input">
+                                        <input matInput placeholder="Email" type="email"
+                                            [(ngModel)]="currentUser.email" name="email" required
+                                            formControlName="emailControl">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="input">
+                                        <input matInput placeholder="Tél" type="text"
+                                            [(ngModel)]="currentUser.phoneNumber" name="phoneNumber" required
+                                            formControlName="phoneNumberControl">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="input">
+                                        <input matInput placeholder="Login" type="text"
+                                            [(ngModel)]="currentUser.userName" name="userName"
+                                            formControlName="userNameControl">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="input">
+                                        <input matInput placeholder="Mot de passe"  type="{{showPassword ? 'text' : 'password'}}"
+                                            [(ngModel)]="currentUser.password" name="password"
+                                            formControlName="passwordControl">
+                                    </mat-form-field>
+                              
+
+
+                                </div>
+                               
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <mat-form-field class="input">
+                                        <input matInput placeholder="retappez mot de passe" type="{{showPassword ? 'text' : 'password'}}"
+                                            [(ngModel)]="currentUser.password" name="password"
+                                            formControlName="passwordControl">
+                                    </mat-form-field>
+                                   
+                                </div>
+                             
+                               
+                               
+                             </div>
+
+                             <div class="row">
+                                <div class="col-md-3">
+                                    <mat-checkbox [checked]="showPassword" (click)="showPassword = !showPassword">Afficher mot de passe</mat-checkbox>
+                                </div>
+                            </div>
+                            
+                                  
+                                
+                                
+                            <button [disabled]="!compteForm.valid" mat-raised-button type="submit"
+                                class="btn btn-success pull-right" (click)="save()" >Sauvegarder</button>
+                            <button mat-raised-button class="btn  btn-success pull-right retour"
+                                (click)="goBack()">Retour</button>
+                            <mat-error class="pull-right" *ngIf="" style="margin-right: 2%">
+
+                            </mat-error>
+                            <div class="clearfix"></div>
+                          
+                        </form>

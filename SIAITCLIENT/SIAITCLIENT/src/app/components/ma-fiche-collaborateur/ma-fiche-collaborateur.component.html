@@ -1,0 +1,183 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mat-elevation-z8 ">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Fiche collaborateur</h4>
+                        <p class="card-category"></p>
+                    </div>
+                    <div class="card-body">
+                        <form >
+                            <button  mat-raised-button class="btn btn-default pull-right" title="Recharger" (click)="ngOnInit()"><i class="material-icons">refresh</i></button><br/>
+                            
+                            
+                            
+                            <div class="row">
+                                <div class="col-md-4">
+                                   
+                                    <mat-form-field class="input-half-width" >
+                                        <input matInput  placeholder="Nom" type="text" name="lastName"  [(ngModel)]="CurrentUser.lastName" #lastName="ngModel" disabled>
+                                      </mat-form-field>
+                                      
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Prénom" type="text" #firstName="ngModel" name="firstName" [(ngModel)]="CurrentUser.firstName"  disabled >
+                                    </mat-form-field>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput  [matDatepicker]="birthDatePicker" placeholder="Date de naissance" #birthDate="ngModel" name="birthDate" [(ngModel)]="CurrentUser.birthDate" disabled>
+                                               <mat-datepicker-toggle matSuffix [for]="birthDatePicker"></mat-datepicker-toggle>
+                                        <mat-datepicker #birthDatePicker></mat-datepicker>
+                                    </mat-form-field>
+                                   
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Email" type="email" #email="ngModel" name="email" [(ngModel)]="CurrentUser.email"   disabled >
+                                </mat-form-field>
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Tel." type="text" #phoneNumber="ngModel" name="phoneNumber" [(ngModel)]="CurrentUser.phoneNumber"   disabled>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-form-field class="example-full-width" >
+                                    <mat-select  #sex="ngModel" name="sex" placeholder="Sexe" [(ngModel)]="CurrentUser.sex" disabled >
+                                        <mat-option [value]="'MAN'">
+                                            Homme
+                                        </mat-option>
+                                        <mat-option [value]="'WOMAN'">
+                                            Femme
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="CNSS" #cnss="ngModel" type="text" name="cnss" [(ngModel)]="CurrentUser.cnss"  disabled >
+                                </mat-form-field>
+                                
+                        </div>
+                        <div class="col-md-3">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="CIN" #cin="ngModel" type="text" name="cin" [(ngModel)]="CurrentUser.cin"  disabled >
+                            </mat-form-field>
+                            
+                    </div>
+                    <div class="col-md-3"> 
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Matricule" #registrationNumber="ngModel" type="text" name="registrationNumber"  [(ngModel)]="CurrentUser.registrationNumber" disabled >
+                        </mat-form-field>
+                        
+                </div>
+                <div class="col-md-3">
+                    <mat-form-field class="example-full-width">
+                        <input matInput readonly [matDatepicker]="hiringDatePicker" placeholder="Date d'embauche" #hiringDate="ngModel" name="hiringDate" [(ngModel)]="CurrentUser.hiringDate" disabled>
+                               <mat-datepicker-toggle matSuffix [for]="hiringDatePicker"></mat-datepicker-toggle>
+                        <mat-datepicker #hiringDatePicker></mat-datepicker>                            
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <mat-form-field class="example-full-width">
+                        <mat-select #civilStatusId ="ngModel" placeholder="Etat civil" name="civilStatusId" [(ngModel)]="CurrentUser.civilStatusId"  disabled>
+                            <mat-option *ngFor="let status of civilStatuses" [value]="status.id">
+                                {{ status.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-md-2">
+                <mat-checkbox  #houseHolder="ngModel" name="houseHolder"  [(ngModel)]="CurrentUser.houseHolder" disabled >Chef de famille</mat-checkbox>
+            </div>
+            <div class="col-md-3">
+                <mat-form-field class="example-full-width" >
+                    <mat-select  #qualificationId="ngModel" placeholder="Qualification" name="qualificationId" [(ngModel)]="CurrentUser.qualificationId"  disabled>
+                        <mat-option *ngFor="let qualification of qualifications" [value]="qualification.id">
+                            {{ qualification.name }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-2">
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Nombre d'enfants" type="number" #numberOfChildren="ngModel" name="numberOfChildren"  [(ngModel)]="CurrentUser.numberOfChildren" disabled >
+            </mat-form-field>
+            
+    </div>
+    <div class="col-md-2">
+        <mat-form-field class="example-full-width" >
+            <mat-select name="gradeId" [(ngModel)]="CurrentUser.gradeId"  placeholder="Ech."  #gradeId="ngModel" disabled>
+                <mat-option *ngFor="let grade of grades" [value]="grade.id">
+                    {{ grade.name }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <mat-form-field class="example-full-width">
+            <input matInput #bban="ngModel" type="text" name="bban"  placeholder="RIB" [(ngModel)]="CurrentUser.bban"  disabled>
+        </mat-form-field>
+        
+</div>
+<div class="col-md-3">
+    <mat-form-field class="example-full-width" >
+        <mat-select name="categoryId" [(ngModel)]="CurrentUser.categoryId"  placeholder="Catégorie"  #categoryId="ngModel" disabled>
+            <mat-option *ngFor="let category of categories" [value]="category.id">
+                {{ category.name }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+</div>
+<div class="col-md-3">
+    <mat-form-field class="example-full-width" >
+        <input matInput placeholder="Salaire"  #salary="ngModel"  [(ngModel)]="CurrentUser.salary" type="number" name="salary"   disabled >
+    </mat-form-field>
+</div>
+<div class="col-md-3">
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Solde de congés" #leaveBalance="ngModel" [(ngModel)]="CurrentUser.leavesBalance" type="number" name="leaveBalance" disabled  >
+    </mat-form-field>
+</div>
+</div>
+<button mat-raised-button class="btn btn-default pull-right" (click)="goBack()">Retour</button>
+<mat-error class="pull-right" *ngIf="" style="margin-right: 2%">
+
+</mat-error>
+<div class="clearfix"></div>
+</form>
+<div>
+   
+
+    <mat-tab-group>
+        <mat-tab label="Carriére">
+            <app-career [collaboratorId]="id"></app-career> 
+        </mat-tab>
+    </mat-tab-group>
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

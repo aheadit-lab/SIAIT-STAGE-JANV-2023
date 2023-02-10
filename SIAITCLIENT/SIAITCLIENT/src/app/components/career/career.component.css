@@ -1,0 +1,31 @@
+.name {
+    white-space: nowrap;
+    max-width: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+
+}
+
+
+th {
+    margin-right: 30px;
+    text-align: center;
+    font-family: Montserrat;
+    font-weight: bold;
+    color: teal;
+
+}
+
+td {
+    text-align: center;
+    color: rgb(61, 61, 61);
+}
+
+table {
+    width: 100%;
+}
+
+.contenu {
+    margin-bottom: 60px;
+}

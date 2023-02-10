@@ -1,0 +1,93 @@
+<div>
+    <div mat-dialog-title>
+      {{title}}
+    </div>
+    <mat-divider></mat-divider>
+  
+    <div mat-dialog-content>
+      <mat-card>
+        <mat-card-content class="card-content">
+          <form name="form" #f="ngForm">
+
+            <div class="input-container">
+              <mat-form-field  style="margin-right:60px; width: 200px;">
+                <mat-label>Titre</mat-label>
+                <input matInput name="titre" type="text" placeholder="Entrez le titre du projet" #name="ngModel"
+                  [(ngModel)]="projet.name" required>
+  
+              </mat-form-field>
+
+              <mat-form-field  style=" width: 200px;">
+                <mat-select matInput [(ngModel)]="projet.managerId" name="ManagerId" 
+                  required>
+                  <mat-option *ngFor="let collab of collaborateurs" [value]="collab.id">
+                   {{ collab.firstName }} -- {{ collab.lastName }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            
+           <br>
+  
+  
+  
+            <div class="input-container">
+            
+              <mat-form-field style="width: 200px; margin-right: 60px;">
+                <mat-label>Nombre de jours</mat-label>
+                <input matInput name="numberOfDays" placeholder="... jours" type="number" #numberOfDays="ngModel"
+                  [(ngModel)]="projet.numberOfDays" required>
+  
+              </mat-form-field>
+              <mat-form-field style="width: 200px; ">
+                <mat-label>Nombre de jours consommé</mat-label>
+                <input matInput name="consumedDays" placeholder="... jours" type="number" #consumedDays="ngModel"
+                  [(ngModel)]="projet.consumedDays" required>
+  
+              </mat-form-field>
+             
+
+            </div><br>
+
+            <div class="input-container">
+                <mat-form-field style="margin-right:60px">
+                  <mat-label>Date de début</mat-label>
+                  <input matInput [matDatepicker]="picker7" name="startDate" #startDate="ngModel"
+                    [(ngModel)]="projet.startDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker7"></mat-datepicker-toggle>
+                  <mat-datepicker #picker7></mat-datepicker>
+                </mat-form-field>
+    
+    
+    
+                <mat-form-field>
+                  <mat-label>Date de fin</mat-label>
+                  <input matInput [matDatepicker]="picker8" name="endDate" #endDate="ngModel"
+                    [(ngModel)]="projet.endDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker8"></mat-datepicker-toggle>
+                  <mat-datepicker #picker8></mat-datepicker>
+                </mat-form-field>
+  
+  
+              </div>
+              <br>
+              <div class="input-container">
+            <mat-checkbox  style="margin-right: 70px;" matInput name="isExtern" #isExtern="ngModel" [(ngModel)]="projet.isExtern"
+            >Externe</mat-checkbox>
+
+
+            <mat-checkbox matInput name="actif" #actif="ngModel" [(ngModel)]="projet.active"
+            >Actif</mat-checkbox>
+            </div>
+           
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <mat-divider></mat-divider>
+    <div mat-dialog-actions fxLayout="row" fxLayoutAlign="end">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!f.form.valid"
+        (click)="save()">{{buttonName}}</button>
+      <button mat-raised-button (click)=close()>Annuler</button>
+    </div>
+  </div>

@@ -1,0 +1,127 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mat-elevation-z8 ">
+                    <div class="card-header">
+                        <h4 class="card-title">Entité</h4>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="entityForm">
+                            <button mat-raised-button class="btn btn-default pull-right" title="Recharger"
+                                (click)="ngOnInit()"><i class="material-icons">refresh</i></button><br />
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="input">
+                                        <input matInput placeholder="name" type="text" name="name" required
+                                            formControlName="nameControl" [(ngModel)]="entity.name">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="input">
+                                        <input matInput placeholder="addresse" type="text"
+                                            [(ngModel)]="entity.address" name="address" required
+                                            formControlName="addressControl" >
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="input">
+                                        <input matInput readonly [matDatepicker]="creationDatePicker"
+                                            placeholder="Date de création" [(ngModel)]="entity.creationDate"
+                                            formControlName="creationDateControl">
+                                        <mat-datepicker-toggle matSuffix
+                                            [for]="creationDatePicker"></mat-datepicker-toggle>
+                                        <mat-datepicker #creationDatePicker></mat-datepicker>
+                                    </mat-form-field>
+                                    <mat-error
+                                        *ngIf="entityForm.controls['creationDateControl'].invalid && (entityForm.controls['creationDateControl'].dirty || entityForm.controls['creationDateControl'].touched)">
+                                        Format de date attendu : jj/mm/yyyy
+                                    </mat-error>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="input">
+                                        <input matInput placeholder="Email" type="email"
+                                            [(ngModel)]="entity.email" name="email" required
+                                            formControlName="emailControl">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="input">
+                                        <input matInput placeholder="Tel." type="text"
+                                            [(ngModel)]="entity.telephone" name="telephone"
+                                            formControlName="telephoneControl">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="input">
+                                        <input matInput placeholder="code d'exploitation" type="text"
+                                            [(ngModel)]="entity.exploitationCode" name="exploitationCode"
+                                            formControlName="exploitationCodeControl">
+                                    </mat-form-field>
+                                </div>
+                               
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <mat-form-field class="input">
+                                        <input matInput placeholder="code" [(ngModel)]="entity.employerCode" type="text"
+                                            name="employerCode" required formControlName="employerCodeControl">
+                                    </mat-form-field>
+                                   
+                                </div>
+                             
+                                <div class="col-md-3">
+                                    <mat-form-field class="input">
+                                        <input matInput placeholder="rne" [(ngModel)]="entity.rne" type="text"
+                                            name="rne" required formControlName="rneControl">
+                                    </mat-form-field>
+
+                                    
+                                       
+                                    </div>
+                                    <div class="col-md-2">
+                                        <mat-form-field class="input">
+                                            <input matInput placeholder="social nSecurity Scheme" [(ngModel)]="entity.socialSecurityScheme" type="text"
+                                                name="socialSecurityScheme" required formControlName="socialSecuritySchemeControl">
+                                        </mat-form-field>
+                                </div>
+                               
+                                </div>
+
+
+
+
+                                <div class="row">
+                                    
+                                 
+                                    <div class="col-md-3">
+                                        <mat-form-field class="input">
+                                            <input matInput placeholder="tax Registration Number" [(ngModel)]="entity.taxRegistrationNumber" type="text"
+                                                name="taxRegistrationNumber" required formControlName="taxRegistrationNumberControl">
+                                        </mat-form-field>
+                                          </div>
+
+                                        <div class="col-md-2">
+                                        <mat-form-field class="input">
+                                            <input matInput placeholder="trade Registration" [(ngModel)]="entity.tradeRegister" type="text"
+                                                name="tradeRegister" required formControlName="tradeRegisterControl">
+                                              
+                                        </mat-form-field>
+                                        
+                                    </div>
+                                   
+                                    </div>
+                                
+                            <button [disabled]="!entityForm.valid" mat-raised-button type="submit"
+                                class="btn btn-success pull-right" (click)="save()">Sauvegarder</button>
+                            <button mat-raised-button class="btn  btn-success pull-right retour"
+                                (click)="goBack()">Retour</button>
+                            <mat-error class="pull-right" *ngIf="" style="margin-right: 2%">
+
+                            </mat-error>
+                            <div class="clearfix"></div>
+                          
+                        </form>

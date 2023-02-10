@@ -1,0 +1,242 @@
+<div>
+  <div mat-dialog-title>
+    {{title}}
+  </div>
+  <mat-divider></mat-divider>
+
+  <div mat-dialog-content>
+    <mat-card>
+      <mat-card-content class="card-content">
+        <form name="form" #f="ngForm">
+          <div class="input-container">
+            <mat-form-field style="margin-right: 100px;">
+              <mat-label>Prénom</mat-label>
+              <input matInput name="firstName" type="text" #firstName="ngModel" [(ngModel)]="collaborateur.firstName"
+                maxlength="10" placeholder="Yosra" required>
+              <mat-error *ngIf="firstName.hasError('required')">
+                Le prénom est obligatoire
+              </mat-error>
+            </mat-form-field>
+
+
+
+            <mat-form-field>
+              <mat-label>Nom</mat-label>
+              <input matInput name="lastName" type="text" #lastName="ngModel" [(ngModel)]="collaborateur.lastName"
+                maxlength="10" placeholder="sd" required>
+              <mat-error *ngIf="lastName.hasError('required')">
+                Le nom est obligatoire
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <br>
+          <div class="input-container">
+            <mat-form-field style="margin-right: 100px;">
+              <mat-label>Cin</mat-label>
+              <input matInput type="text" placeholder="544.." name="cin" #cin="ngModel" maxlength="16"
+                [(ngModel)]="collaborateur.cin">
+
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Cnss</mat-label>
+              <input matInput name="cnss" placeholder="2424..." type="text" #cnss="ngModel"
+                [(ngModel)]="collaborateur.cnss" maxlength="16">
+
+            </mat-form-field>
+          </div>
+          <div class="input-container">
+
+            <mat-form-field style="margin-right: 100px;">
+              <mat-label>Matricule</mat-label>
+              <input matInput name="matricule" placeholder="54..." type="text" #address="ngModel"
+                [(ngModel)]="collaborateur.registrationNumber" required>
+              <mat-error *ngIf="address.hasError('required')">
+                La matricule est obligatoire
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Tél</mat-label>
+              <input matInput name="phoneNumber" type="text" #phoneNumber="ngModel"
+                [(ngModel)]="collaborateur.phoneNumber" placeholder="ex: +216 00 00 00 00" required>
+              <mat-icon matSuffix>phone</mat-icon>
+              <mat-error *ngIf="phoneNumber.hasError('required')">
+                Le tél est obligatoire
+              </mat-error>
+            </mat-form-field>
+          </div> <br>
+          <div class="input-container">
+            <mat-form-field style="margin-right: 100px;">
+              <mat-label>Sexe</mat-label>
+              <input matInput name="sexe" type="text" placeholder="Male/Femelle" #function="ngModel"
+                [(ngModel)]="collaborateur.sex" required>
+
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Date naissance</mat-label>
+              <input matInput [matDatepicker]="picker2" name="birthDate" #birthDate="ngModel"
+                [(ngModel)]="collaborateur.birthDate">
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+
+          </div><br>
+          <mat-form-field style="margin-right: 100px;">
+            <mat-label>Date d'embauche</mat-label>
+            <input matInput [matDatepicker]="picker1" name="hiringDate" #birthDate="ngModel"
+              [(ngModel)]="collaborateur.hiringDate">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field class="email-input" >
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="ex: expl@gmail.com" name="email" type="text" #email="ngModel"
+              [(ngModel)]="collaborateur.email" required [pattern]="emailPattern" maxlength="50">
+            <mat-error *ngIf="email.hasError('required')">
+              l'email est obligatoir
+            </mat-error>
+            <mat-error *ngIf="email.hasError('pattern')">
+              Le format doit être : <i> john@doe.com </i>!
+            </mat-error>
+          </mat-form-field>
+          <div class="input-container">
+            <mat-form-field style="margin-right: 100px;">
+              <mat-label>Bban</mat-label>
+              <input matInput name="bban" type="text" placeholder="3545..." #bban="ngModel"
+                [(ngModel)]="collaborateur.bban" required>
+
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Date du solde des congés</mat-label>
+              <input matInput [matDatepicker]="picker3" name="leaveBalanceDate" #leaveBalanceDate="ngModel"
+                [(ngModel)]="collaborateur.leavesBalanceDate">
+              <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+              <mat-datepicker #picker3></mat-datepicker>
+            </mat-form-field>
+
+          </div><br>
+
+          
+
+
+          <div class="input-container">
+            <mat-form-field style="margin-right: 100px;">
+              <mat-label>Salaire</mat-label>
+              <input matInput name="salary" placeholder="ex : 200DT" type="number" #salary="ngModel"
+                [(ngModel)]="collaborateur.salary" required>
+
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Solde de congés</mat-label>
+              <input matInput name="leaveBalance" placeholder="2.." type="number" #leaveBalance="ngModel"
+                [(ngModel)]="collaborateur.leavesBalance" required>
+
+            </mat-form-field>
+
+          </div><br>
+
+          <div class="input-container" >
+            <mat-form-field style="margin-right: 100px;">
+              <!-- <mat-label>Catégorie</mat-label>
+                    <input matInput  type="number"  
+                    placeholder="Catégorie" #category="ngModel" 
+                    [(ngModel)]="collaborateur.categoryId" required> -->
+
+              <mat-select matInput [(ngModel)]="collaborateur.categoryId" name="Categorie" placeholder="Catégorie"
+                required>
+                <mat-option *ngFor="let category of categories" [value]="category.id">
+                  {{ category.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-select matInput [(ngModel)]="collaborateur.gradeId" name="Grade" placeholder="Grade" required>
+                <mat-option *ngFor="let garde of grades" [value]="garde.id">
+                  {{ garde.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </div><br>
+
+          <div class="input-container">
+            <mat-form-field style="margin-right: 100px;">
+              <mat-select matInput [(ngModel)]="collaborateur.qualificationId" name="qualification"
+                placeholder="Qualification" required>
+                <mat-option *ngFor="let qualification of qualifications" [value]="qualification.id">
+                  {{ qualification.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-select matInput [(ngModel)]="collaborateur.civilStatusId" name="civilStatus"
+                placeholder="CivilStatus" required>
+                <mat-option *ngFor="let civilStatus of civilStatuses" [value]="civilStatus.id">
+                  {{ civilStatus.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </div><br>
+
+
+          <div class="input-container">
+
+
+            <mat-checkbox style="margin-right: 330px;" matInput name="superUser" #superUser="ngModel" [(ngModel)]="collaborateur.superUser"
+              ><mat-label>Super utilisateur</mat-label> </mat-checkbox>
+
+            <mat-checkbox matInput name="houseHolder" #houseHolder="ngModel" [(ngModel)]="collaborateur.houseHolder"
+              >Chef de famille</mat-checkbox>
+
+
+          </div><br>
+          <div class="input-container">
+            <mat-form-field style="margin-right: 100px;">
+              <mat-label>Nom d'utilisateur</mat-label>
+              <input matInput name="username" type="text" placeholder="yos" #username="ngModel"
+                [(ngModel)]="collaborateur.userName" required>
+
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Mot de passe</mat-label>
+              <input matInput name="password" type="password" #password="ngModel" [(ngModel)]="collaborateur.password"
+                required>
+
+            </mat-form-field>
+
+          </div><br>
+
+          <div class="input-container">
+            <mat-form-field style="margin-right: 100px;">
+              <mat-label>Profil</mat-label>
+              <input matInput name="profil" type="number" placeholder="1" #profil="ngModel"
+                [(ngModel)]="collaborateur.profilId" required>
+                <mat-select matInput [(ngModel)]="collaborateur.profilId" name="profilId"
+                placeholder="profilId" required>
+                <mat-option *ngFor="let profil of profils" [value]="profil.id">
+                  {{ profil.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+
+            <mat-form-field >
+              <input matInput placeholder="Nombre d'enfants"  [(ngModel)]="collaborateur.numberOfChildren"  name="numberOfChilldren"   type="number" #numberOfChildren="ngModel" >
+          </mat-form-field>
+         
+
+
+          </div><br>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <mat-divider></mat-divider>
+  <div mat-dialog-actions fxLayout="row" fxLayoutAlign="end">
+    <button mat-raised-button color="primary" type="submit" [disabled]="!f.form.valid"
+      (click)="saveEmploy()">{{buttonName}}</button>
+    <button mat-raised-button (click)=close()>Annuler</button>
+  </div>
+</div>

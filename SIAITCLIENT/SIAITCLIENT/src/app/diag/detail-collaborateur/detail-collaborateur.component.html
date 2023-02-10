@@ -1,0 +1,128 @@
+<div *ngIf="collaborateur">
+    <div mat-dialog-title>
+      {{title}}
+    </div>
+    <mat-divider></mat-divider>
+    
+    <div mat-dialog-content> 
+      <mat-card > 
+        <mat-card-content class="card-content">
+          <form name="form" #f="ngForm">
+            <div class="input-container">
+
+
+              <mat-form-field style="margin-right: 60px; width: 200px;">
+                <mat-label>Prénom</mat-label>
+                <input matInput name="firstName" type="text" #firstName="ngModel" [(ngModel)]="collaborateur.firstName"
+                  maxlength="10" required>
+                <mat-error *ngIf="firstName.hasError('required')">
+                 Le prénom est obligatoire
+                </mat-error>
+              </mat-form-field>
+
+
+              <mat-form-field style=" width: 200px;">
+                <mat-label>Nom</mat-label>
+                <input matInput name="lastName" type="text" #lastName="ngModel" [(ngModel)]="collaborateur.lastName"
+                  maxlength="10" required>
+                <mat-error *ngIf="lastName.hasError('required')">
+                  Le nom est obligatoire
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <br>
+
+
+            <div class="input-container">
+
+              <mat-form-field style="margin-right: 60px; width: 200px;">
+                <mat-label>Cin</mat-label>
+                <input matInput type="text" name="cin" #cin="ngModel" maxlength="16" [(ngModel)]="collaborateur.cin"  >
+             </mat-form-field>
+
+              <mat-form-field style="width: 200px;">
+                <mat-label>Cnss</mat-label>
+                <input matInput  name="cnss" type="text" #cnss="ngModel" [(ngModel)]="collaborateur.cnss" maxlength="16" >
+             </mat-form-field>
+            </div>
+            <br>
+
+            <div class="input-container">
+        
+              <mat-form-field style="margin-right: 60px; width: 200px;">
+                <mat-label>Matricule</mat-label>
+                <input matInput name="matricule" type="text" #address="ngModel" [(ngModel)]="collaborateur.registrationNumber" required>
+                <mat-error *ngIf="address.hasError('required')">
+                 La matricule est obligatoire
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field style=" width: 200px;">
+                <mat-label>Tél</mat-label>
+                <input matInput name="phoneNumber" type="text" #phoneNumber="ngModel" [(ngModel)]="collaborateur.phoneNumber" placeholder="ex: +216 00 00 00 00" required>
+                <mat-icon matSuffix>phone</mat-icon>
+                <mat-error *ngIf="phoneNumber.hasError('required')">
+                  Le tél est obligatoire
+                </mat-error>
+              </mat-form-field>
+            </div>
+             <br>
+
+            <div class="input-container">
+
+             <mat-form-field style="margin-right: 60px; width: 200px;">
+              <mat-select [(ngModel)]="collaborateur.sex" placeholder="Sexe" required name="sexe">
+                  <mat-option [value]="'MAN'">
+                      Homme
+                  </mat-option>
+                  <mat-option [value]="'WOMAN'">
+                      Femme
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
+
+
+
+              <mat-form-field>
+                <mat-label>Date naissance</mat-label>
+                <input matInput [matDatepicker]="picker2" name="birthDate" #birthDate="ngModel" [(ngModel)]="collaborateur.birthDate">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+              </mat-form-field>
+
+            </div>
+            
+            <br>
+
+            <div class="input-container">
+
+            <mat-form-field style="margin-right: 60px;">
+              <mat-label>Date d'embauche</mat-label>
+              <input matInput [matDatepicker]="picker1" name="hiringDate" #birthDate="ngModel" [(ngModel)]="collaborateur.hiringDate">
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+            
+            <mat-form-field class="email-input" style=" width: 200px;">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="ex: expl@gmail.com" name="email" type="text" #email="ngModel" [(ngModel)]="collaborateur.email"
+               required [pattern]="emailPattern" maxlength="50">
+              <mat-error *ngIf="email.hasError('required')">
+                l'email est obligatoir
+              </mat-error>
+              <mat-error *ngIf="email.hasError('pattern')">
+                Le format doit être : <i> john@doe.com </i>!
+            </mat-error>
+            </mat-form-field>
+           </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <mat-divider></mat-divider>
+    <div mat-dialog-actions fxLayout="row" fxLayoutAlign="end" >
+      <button mat-raised-button color="primary"  type="submit" [disabled]="!f.form.valid" (click)="saveEmploy()">{{buttonName}}</button>
+      <button mat-raised-button (click)=close()  >Annuler</button>  
+   </div>
+  </div>
+  

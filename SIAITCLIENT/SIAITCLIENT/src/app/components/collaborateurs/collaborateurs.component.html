@@ -1,0 +1,253 @@
+
+<!-- 
+<div style="height:auto; min-height:100%;">
+  
+   
+    
+      <div class="search-class">
+        <mat-form-field class="search-box">
+            <input matInput placeholder="Search" name="search" (keyup)="applyFilter($event)">
+        </mat-form-field>
+    </div>
+
+     
+        
+        <div style="position: relative;top:50px;">
+            <button mat-icon-button color="primary" matTooltip="Add Product" matTooltipClass="appToolTip" class="add-button"
+            mat-raised-button (click)="ajouterCollab()" style="float: right;margin-right: 10%;;width: 50px;height: 50px;">
+            <mat-icon style="font-size: 180%;">add</mat-icon>
+        </button>
+         </div>
+        <br>
+       
+    
+    
+  
+
+  
+<div class="mat-elevation-z8 demo-table">
+ <table mat-table [dataSource]="dataSource" >
+ 
+    <ng-container matColumnDef="CIN">
+        <th mat-header-cell *matHeaderCellDef> CIN </th>
+        <td mat-cell *matCellDef="let element" (click)="showDetails(element)"> {{element?.cin}} </td>
+      </ng-container>
+
+
+    <ng-container matColumnDef="Nom">
+        <th mat-header-cell *matHeaderCellDef> Nom </th>
+        <td mat-cell *matCellDef="let element" (click)="showDetails(element)"> {{element?.firstName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Prénom">
+        <th mat-header-cell *matHeaderCellDef> Prénom </th>
+        <td mat-cell *matCellDef="let element" (click)="showDetails(element)"> {{element?.lastName}} </td>
+      </ng-container>
+    
+     
+      <ng-container matColumnDef="Email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element" (click)="showDetails(element)"> {{element?.email}} </td>
+      </ng-container>
+    
+      
+      <ng-container matColumnDef="Tél">
+        <th mat-header-cell *matHeaderCellDef> Tél </th>
+        <td mat-cell *matCellDef="let element" (click)="showDetails(element)"> {{element?.phoneNumber}}  </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="CNSS">
+        <th mat-header-cell *matHeaderCellDef> CNSS </th>
+        <td mat-cell *matCellDef="let element" (click)="showDetails(element)"> {{element?.cnss}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let element" fxLayout="row" fxLayoutAlign="end end" class="buttons">
+
+        <td>  <button mat-icon-button matTooltip="Modifier" style="margin-right: 10px;" matTooltipClass="appToolTip" mat-raised-button
+                (click)="modifierCollaborateur(element)">
+                <mat-icon style="font-size: 130%;">edit</mat-icon>
+            </button></td>  
+         <td> <button mat-icon-button matTooltip="Supprimer" matTooltipClass="appToolTip" mat-raised-button
+                (click)="supprimerCollaborateur(element?.id)" >
+                <mat-icon color="warn" style="font-size: 130%;">delete</mat-icon>
+            </button></td>  
+        </mat-cell>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
+   <a href=""> 
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" >
+
+    </tr></a>
+ 
+    
+
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons  ></mat-paginator>
+
+</div>
+
+</div> -->
+
+
+
+
+<!-- 
+    <div class="search-class">
+      <mat-form-field class="search-box">
+          <input matInput placeholder="Search" name="search" (keyup)="applyFilter($event)">
+      </mat-form-field>
+  </div>
+ 
+      <div style="position: relative;top:50px;">
+          <button mat-icon-button color="primary" matTooltip="Add Product" matTooltipClass="appToolTip" class="add-button"
+          mat-raised-button (click)="ajouterProjet()" >
+          <mat-icon style="font-size: 180%;">add</mat-icon>
+      </button>
+       </div>
+      <br>
+     
+
+
+<table mat-table [dataSource]="dataSource"  class="mat-elevation-z8 demo-table">
+
+  <ng-container matColumnDef="Nom">
+      <th mat-header-cell *matHeaderCellDef> Nom </th>
+      <td mat-cell *matCellDef="let element"> {{element?.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Nombre de jours">
+      <th mat-header-cell *matHeaderCellDef> Nombre de jours </th>
+      <td mat-cell *matCellDef="let element" > {{element?.numberOfDays}} </td>
+    </ng-container>
+  
+   
+    <ng-container matColumnDef="Nombre de jours consommé" >
+      <th mat-header-cell *matHeaderCellDef> Nombre de jours consommé </th>
+      <td mat-cell *matCellDef="let element" > {{element?.consumedDays}} </td>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="ManagerId">
+      <th mat-header-cell *matHeaderCellDef> Manager Id</th>
+      <td mat-cell *matCellDef="let element"  > {{element.managerId}}  </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Actif">
+      <th mat-header-cell *matHeaderCellDef> Actif </th>
+      <td mat-cell *matCellDef="let element" > {{element?.active === false ? 'terminé' : 'actif'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Externe">
+        <th mat-header-cell *matHeaderCellDef> Externe </th>
+        <td mat-cell *matCellDef="let element" > {{element?.isExtern === false ? 'interne' : 'externe'}} </td>
+      </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let element" fxLayout="row" fxLayoutAlign="end end" class="buttons">
+
+      <td>  <button mat-icon-button matTooltip="Modifier" style="margin-right: 10px;" matTooltipClass="appToolTip" mat-raised-button
+              (click)="modifierProjet(element)">
+              <mat-icon style="font-size: 130%;">edit</mat-icon>
+          </button></td>  
+       <td> <button mat-icon-button matTooltip="Supprimer" matTooltipClass="appToolTip" mat-raised-button
+              (click)="supprimerProjet(element?.id)" >
+              <mat-icon color="warn" style="font-size: 130%;">delete</mat-icon>
+          </button></td>  
+      </mat-cell>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
+ <a href=""> 
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" >
+
+  </tr></a>
+
+  
+
+</table>
+
+<mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons  class="paginator-class" ></mat-paginator>
+
+
+
+ -->
+
+
+ <div style="margin-top:40px ; width: 80%; margin-left: 150px;">
+   
+  <div style="border-radius: 20px;">
+     
+  <mat-form-field  >
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)"  #input>
+    </mat-form-field>
+  </div>
+  
+  <div style="position: absolute; left:87%; top: 80px; " >
+    <button mat-icon-button style="background-color:rgba(0, 0, 0, 0.776); color: aliceblue;" matTooltip="Add Product" matTooltipClass="appToolTip" class="add-button"
+    mat-raised-button (click)="ajouterCollab()" >
+    <mat-icon style="font-size: 180%;">add</mat-icon>
+</button>
+ </div>
+    <div class="mat-elevation-z8" style="margin-right: 25px;" >
+      <table mat-table [dataSource]="dataSource" matSort>
+       
+        <ng-container matColumnDef="CIN">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Cin </th>
+          <td mat-cell *matCellDef="let row" (click)="showDetails(row)"> {{row.cin}} </td>
+        </ng-container>
+       
+        <ng-container matColumnDef="Nom">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom </th>
+          <td mat-cell *matCellDef="let row" (click)="showDetails(row)"> {{row.lastName}} </td>
+        </ng-container>
+    
+
+        <ng-container matColumnDef="Prénom">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Prénom </th>
+          <td mat-cell *matCellDef="let row" (click)="showDetails(row)"> {{row.firstName}} </td>
+        </ng-container>
+
+        
+        <ng-container matColumnDef="Email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+          <td mat-cell *matCellDef="let row" (click)="showDetails(row)"> {{row.email}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Tél">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Tél </th>
+          <td mat-cell *matCellDef="let row" (click)="showDetails(row)"> {{row.phoneNumber}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="CNSS">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Cnss </th>
+          <td mat-cell *matCellDef="let row" (click)="showDetails(row)"> {{row.cnss}}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="position: relative;"> Actions</span> </th>
+          <td mat-cell *matCellDef="let row">
+              <div style="display: flex;">
+              <button mat-button (click)="modifierCollaborateur(row)"><span style="color:rgba(0, 0, 0, 0.776);" class="material-symbols-outlined">edit</span></button>
+              <button mat-button (click)="supprimerCollaborateur(row.id)" ><span style="color:rgba(0, 0, 0, 0.776);" class="material-symbols-outlined">delete</span></button> 
+              </div>
+          </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+        <!-- Row shown when there is no matching data. -->
+        
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[10, 20, 40, 100]" aria-label="Select page of users"></mat-paginator>
+    </div>
+</div>

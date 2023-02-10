@@ -1,0 +1,48 @@
+<div *ngIf="profil">
+    <div mat-dialog-title>
+      {{title}}
+    </div>
+    <mat-divider></mat-divider>
+    
+    <div mat-dialog-content> 
+      <mat-card > 
+        <mat-card-content class="card-content">
+          <form name="form" #f="ngForm">
+            <div class="input-container">
+
+
+              <mat-form-field style="margin-right: 60px; width: 200px;">
+                <mat-label>Nom</mat-label>
+                <input matInput name="name" type="text" #name="ngModel" [(ngModel)]="profil.name"
+                  maxlength="25" required>
+                <mat-error *ngIf="name.hasError('required')">
+                 Le nom est obligatoire
+                </mat-error>
+              </mat-form-field>
+
+
+              <mat-form-field style=" width: 200px;">
+                <mat-label>Code</mat-label>
+                <input matInput name="code" type="text" #code="ngModel" [(ngModel)]="profil.code"
+                  maxlength="25" required>
+                <mat-error *ngIf="code.hasError('required')">
+                  Le code est obligatoire
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <br>
+
+
+           
+           
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <mat-divider></mat-divider>
+    <div mat-dialog-actions fxLayout="row" fxLayoutAlign="end" >
+      <button mat-raised-button color="primary"  type="submit" [disabled]="!(f.form.valid)" (click)="saveProfile()">{{buttonName}}</button>
+      <button mat-raised-button (click)="close()"  >Annuler</button>  
+   </div>
+  </div>
+  

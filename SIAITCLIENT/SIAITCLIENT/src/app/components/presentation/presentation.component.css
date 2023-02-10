@@ -1,0 +1,88 @@
+.main
+{
+    width: 100% !important;
+    height: 20% !important;
+    background-image: url(../../../assets/img/pres.png) !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* span{
+    height: 0px;
+} */
+.title{
+    position: relative;
+    top:80px;
+    font-size: 50px;
+   padding-top: 250px;
+   padding-left:100px ;
+   color: rgb(5, 63, 63);
+   letter-spacing: 2px;
+}
+.main-box{
+   
+   display: flex;
+   margin-top: 50px !important;
+  
+}
+
+.mini-box{
+ 
+    height: 200px;
+  
+    display: inline;
+    
+    background-color: rgba(255, 255, 255, 0.395);
+    border-radius: 10px;
+    margin-bottom: 200px;
+}
+
+.icon-box{
+    position: relative;
+    top:2%;
+   
+    background-color: rgba(59, 122, 122, 0.897);
+    border-radius: 10px;
+    padding: 20px;
+    padding-left:22px ;
+    width: 90px;
+    height: 90px;
+    
+}
+
+.i{
+    font-size: 50px;
+    color: aliceblue;
+}
+
+.leave{
+
+    width: 400px;
+    margin-left: 60%;
+    height: 400px !important;
+}
+
+.card-category{
+    letter-spacing: 3px;
+    font-size: 16px;
+    color: grey;
+
+}
+
+.card-title{
+    font-size: 24px;
+    color: rgb(95, 95, 95);
+   
+    margin-top: 10px;
+    margin-left: 220px;
+}
+
+.date{
+    color: grey;
+    
+}
+
+p{
+    text-align: right;
+    margin-right: 15px;
+}

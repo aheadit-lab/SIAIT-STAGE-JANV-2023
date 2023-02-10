@@ -1,0 +1,22 @@
+li:hover{
+  cursor: pointer;
+  
+}
+li{
+  margin-top: 40px;
+  margin-left: 10px;
+  color: #fff !important;
+}
+  
+ul,li { list-style-type: none; }
+.mat-sidenav{
+  background-image: url(../../../assets/img/side.png);
+ 
+    background-repeat:no-repeat; background-size: cover; 
+}
+.link{
+  background-color: rgba(128, 128, 128, 0.463); 
+  border-radius: 10px;
+  padding: 10px;
+  margin-right: 10px;
+}
